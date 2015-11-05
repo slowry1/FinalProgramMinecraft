@@ -125,26 +125,23 @@ public class FPCameraController {
         //we times the movementSpeed with dt this is a time scale
         //so if its a slow frame u move more then a fast frame
         //so on a slow computer you move just as fast as on a fast computer
-        if (Keyboard.isKeyDown(Keyboard.KEY_W)){//move forward
+        if (Keyboard.isKeyDown(Keyboard.KEY_W)||Keyboard.isKeyDown(Keyboard.KEY_UP)){//move forward
         camera.walkForward(movementSpeed);
         }
-        if (Keyboard.isKeyDown(Keyboard.KEY_S)){//move backwards
+        if (Keyboard.isKeyDown(Keyboard.KEY_S)||Keyboard.isKeyDown(Keyboard.KEY_DOWN)){//move backwards
         camera.walkBackwards(movementSpeed);
         }
 
-        if (Keyboard.isKeyDown(Keyboard.KEY_A)) {//strafe left
+        if (Keyboard.isKeyDown(Keyboard.KEY_A)||Keyboard.isKeyDown(Keyboard.KEY_LEFT)) {//strafe left
         camera.strafeLeft(movementSpeed);
         }
-        if (Keyboard.isKeyDown(Keyboard.KEY_D)) {//strafe right
+        if (Keyboard.isKeyDown(Keyboard.KEY_D)||Keyboard.isKeyDown(Keyboard.KEY_RIGHT)) {//strafe right
         camera.strafeRight(movementSpeed);
         }
         if (Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {//move up
         camera.moveUp(movementSpeed);
         }
         if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT )) {
-        camera.moveDown(movementSpeed);
-        }
-        if (Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
         camera.moveDown(movementSpeed);
         }
 
@@ -163,101 +160,104 @@ public class FPCameraController {
         Display.destroy();
     }
     
+    // This is where the Quads/Lines are created and colored
     private void render() {
         try{
-        glBegin(GL_QUADS);
-        //Top
-        glColor3f(1.0f,0.0f,0.0f);
-        glVertex3f( 1.0f, 1.0f,-1.0f);
-        glVertex3f(-1.0f, 1.0f,-1.0f);
-        glVertex3f(-1.0f, 1.0f, 1.0f);
-        glVertex3f( 1.0f, 1.0f, 1.0f);
-        glEnd();
-        glBegin(GL_QUADS);
-        glColor3f(0.0f,1.0f,0.0f);
-        //Bottom
-        glVertex3f( 1.0f,-1.0f, 1.0f);
-        glVertex3f(-1.0f,-1.0f, 1.0f);
-        glVertex3f(-1.0f,-1.0f,-1.0f);
-        glVertex3f( 1.0f,-1.0f,-1.0f);
-        glEnd();
-        glBegin(GL_QUADS);
-        glColor3f(0.0f,0.0f,1.0f);
-        //Front
-        glVertex3f( 1.0f, 1.0f, 1.0f);
-        glVertex3f(-1.0f, 1.0f, 1.0f);
-        glVertex3f(-1.0f,-1.0f, 1.0f);
-        glVertex3f( 1.0f,-1.0f, 1.0f);
-        glEnd();
-        glBegin(GL_QUADS);
-        glColor3f(1.0f,1.0f,0.0f);
-        //Back
-        glVertex3f( 1.0f,-1.0f,-1.0f);
-        glVertex3f(-1.0f,-1.0f,-1.0f);
-        glVertex3f(-1.0f, 1.0f,-1.0f);
-        glVertex3f( 1.0f, 1.0f,-1.0f);
-        glEnd();
-        glBegin(GL_QUADS);
-        glColor3f(1.0f,0.0f,1.0f);
-        //Left
-        glVertex3f(-1.0f, 1.0f,1.0f);
-        glVertex3f(-1.0f, 1.0f,-1.0f);
-        glVertex3f(-1.0f,-1.0f,-1.0f);
-        glVertex3f(-1.0f,-1.0f, 1.0f);
-        glEnd();
-        glBegin(GL_QUADS);
-        glColor3f(0.0f,1.0f,1.0f);
-        //Right
-        glVertex3f( 1.0f, 1.0f,-1.0f);
-        glVertex3f( 1.0f, 1.0f, 1.0f);
-        glVertex3f( 1.0f,-1.0f, 1.0f);
-        glVertex3f( 1.0f,-1.0f,-1.0f);
-        glEnd();
-        
-        // Color the lines that make up the square
-        glBegin(GL_LINE_LOOP);
-        //Top
-        glColor3f(0.0f,0.0f,0.0f);
-        glVertex3f( 1.0f, 1.0f,-1.0f);
-        glVertex3f(-1.0f, 1.0f,-1.0f);
-        glVertex3f(-1.0f, 1.0f, 1.0f);
-        glVertex3f( 1.0f, 1.0f, 1.0f);
-        glEnd();
-        glBegin(GL_LINE_LOOP);
-        //Bottom
-        glVertex3f( 1.0f,-1.0f, 1.0f);
-        glVertex3f(-1.0f,-1.0f, 1.0f);
-        glVertex3f(-1.0f,-1.0f,-1.0f);
-        glVertex3f( 1.0f,-1.0f,-1.0f);
-        glEnd();
-        glBegin(GL_LINE_LOOP);
-        //Front
-        glVertex3f( 1.0f, 1.0f, 1.0f);
-        glVertex3f(-1.0f, 1.0f, 1.0f);
-        glVertex3f(-1.0f,-1.0f, 1.0f);
-        glVertex3f( 1.0f,-1.0f, 1.0f);
-        glEnd(); 
-        glBegin(GL_LINE_LOOP);
-        //Back
-        glVertex3f( 1.0f,-1.0f,-1.0f);
-        glVertex3f(-1.0f,-1.0f,-1.0f);
-        glVertex3f(-1.0f, 1.0f,-1.0f);
-        glVertex3f( 1.0f, 1.0f,-1.0f);
-        glEnd();
-        glBegin(GL_LINE_LOOP);
-        //Left
-        glVertex3f(-1.0f, 1.0f, 1.0f);
-        glVertex3f(-1.0f, 1.0f,-1.0f);
-        glVertex3f(-1.0f,-1.0f,-1.0f);
-        glVertex3f(-1.0f,-1.0f, 1.0f);
-        glEnd();
-        glBegin(GL_LINE_LOOP);
-        //Right
-        glVertex3f( 1.0f, 1.0f,-1.0f);
-        glVertex3f( 1.0f, 1.0f, 1.0f);
-        glVertex3f( 1.0f,-1.0f, 1.0f);
-        glVertex3f( 1.0f,-1.0f,-1.0f);
-        glEnd();
+            // Start creating the cube. They are moved back away from the 
+            // camera so that the camera does not appear inside of the cube.
+            glBegin(GL_QUADS);
+            //Top
+            glColor3f(1.0f,0.0f,0.0f);
+            glVertex3f( 1.0f, 1.0f,-3.0f);
+            glVertex3f(-1.0f, 1.0f,-3.0f);
+            glVertex3f(-1.0f, 1.0f, -1.0f);
+            glVertex3f( 1.0f, 1.0f, -1.0f);
+            glEnd();
+            glBegin(GL_QUADS);
+            glColor3f(0.0f,1.0f,0.0f);
+            //Bottom
+            glVertex3f( 1.0f,-1.0f, -1.0f);
+            glVertex3f(-1.0f,-1.0f, -1.0f);
+            glVertex3f(-1.0f,-1.0f,-3.0f);
+            glVertex3f( 1.0f,-1.0f,-3.0f);
+            glEnd();
+            glBegin(GL_QUADS);
+            glColor3f(0.0f,0.0f,1.0f);
+            //Front
+            glVertex3f( 1.0f, 1.0f, -1.0f);
+            glVertex3f(-1.0f, 1.0f, -1.0f);
+            glVertex3f(-1.0f,-1.0f, -1.0f);
+            glVertex3f( 1.0f,-1.0f, -1.0f);
+            glEnd();
+            glBegin(GL_QUADS);
+            glColor3f(1.0f,1.0f,0.0f);
+            //Back
+            glVertex3f( 1.0f,-1.0f,-3.0f);
+            glVertex3f(-1.0f,-1.0f,-3.0f);
+            glVertex3f(-1.0f, 1.0f,-3.0f);
+            glVertex3f( 1.0f, 1.0f,-3.0f);
+            glEnd();
+            glBegin(GL_QUADS);
+            glColor3f(1.0f,0.0f,1.0f);
+            //Left
+            glVertex3f(-1.0f, 1.0f, -1.0f);
+            glVertex3f(-1.0f, 1.0f,-3.0f);
+            glVertex3f(-1.0f,-1.0f,-3.0f);
+            glVertex3f(-1.0f,-1.0f, -1.0f);
+            glEnd();
+            glBegin(GL_QUADS);
+            glColor3f(0.0f,1.0f,1.0f);
+            //Right
+            glVertex3f( 1.0f, 1.0f,-3.0f);
+            glVertex3f( 1.0f, 1.0f, -1.0f);
+            glVertex3f( 1.0f,-1.0f, -1.0f);
+            glVertex3f( 1.0f,-1.0f,-3.0f);
+            glEnd();
+            
+            // Color the lines that make up the square
+            glBegin(GL_LINE_LOOP);
+            //Top
+            glColor3f(0.0f,0.0f,0.0f);
+            glVertex3f( 1.0f, 1.0f,-3.0f);
+            glVertex3f(-1.0f, 1.0f,-3.0f);
+            glVertex3f(-1.0f, 1.0f,-1.0f);
+            glVertex3f( 1.0f, 1.0f,-1.0f);
+            glEnd();
+            glBegin(GL_LINE_LOOP);
+            //Bottom
+            glVertex3f( 1.0f,-1.0f,-1.0f);
+            glVertex3f(-1.0f,-1.0f,-1.0f);
+            glVertex3f(-1.0f,-1.0f,-3.0f);
+            glVertex3f( 1.0f,-1.0f,-3.0f);
+            glEnd();
+            glBegin(GL_LINE_LOOP);
+            //Front
+            glVertex3f( 1.0f, 1.0f,-1.0f);
+            glVertex3f(-1.0f, 1.0f,-1.0f);
+            glVertex3f(-1.0f,-1.0f,-1.0f);
+            glVertex3f( 1.0f,-1.0f,-1.0f);
+            glEnd(); 
+            glBegin(GL_LINE_LOOP);
+            //Back
+            glVertex3f( 1.0f,-1.0f,-3.0f);
+            glVertex3f(-1.0f,-1.0f,-3.0f);
+            glVertex3f(-1.0f, 1.0f,-3.0f);
+            glVertex3f( 1.0f, 1.0f,-3.0f);
+            glEnd();
+            glBegin(GL_LINE_LOOP);
+            //Left
+            glVertex3f(-1.0f, 1.0f,-1.0f);
+            glVertex3f(-1.0f, 1.0f,-3.0f);
+            glVertex3f(-1.0f,-1.0f,-3.0f);
+            glVertex3f(-1.0f,-1.0f,-1.0f);
+            glEnd();
+            glBegin(GL_LINE_LOOP);
+            //Right
+            glVertex3f( 1.0f, 1.0f,-3.0f);
+            glVertex3f( 1.0f, 1.0f,-1.0f);
+            glVertex3f( 1.0f,-1.0f,-1.0f);
+            glVertex3f( 1.0f,-1.0f,-3.0f);
+            glEnd(); 
         }catch(Exception e){
         }
     }    
