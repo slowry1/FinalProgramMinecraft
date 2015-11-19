@@ -19,7 +19,7 @@ public class FPCameraController {
     //the rotation around the X axis of the camera
     private float pitch = 0.0f;
     private Vector3Float me;
-    
+
     public FPCameraController(float x, float y, float z){
         //instantiate position Vector3f to the x y z params.
         position = new Vector3f(x, y, z);
@@ -145,14 +145,16 @@ public class FPCameraController {
         camera.moveDown(movementSpeed);
         }
 
-
         //set the modelview matrix back to the identity
         glLoadIdentity();
         //look through the camera before you draw anything
         camera.lookThrough();
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         //you would draw your scene here.
-        render();
+      Chunk chunkObject = new Chunk(-30,1,-75);
+        chunkObject.render();
+              System.out.println("Chunk object render11111111111122222222222222223333333333333333333344444444444444555555555555555555               56666666666666666667777777777777777777777");
+        
         //draw the buffer to the screen
         Display.update();
         Display.sync(60);
@@ -160,106 +162,106 @@ public class FPCameraController {
         Display.destroy();
     }
     
-    // This is where the Quads/Lines are created and colored
-    private void render() {
-        try{
-            // Start creating the cube. They are moved back away from the 
-            // camera so that the camera does not appear inside of the cube.
-            glBegin(GL_QUADS);
-            //Top
-            glColor3f(1.0f,0.0f,0.0f);
-            glVertex3f( 1.0f, 1.0f,-3.0f);
-            glVertex3f(-1.0f, 1.0f,-3.0f);
-            glVertex3f(-1.0f, 1.0f, -1.0f);
-            glVertex3f( 1.0f, 1.0f, -1.0f);
-            glEnd();
-            glBegin(GL_QUADS);
-            glColor3f(0.0f,1.0f,0.0f);
-            //Bottom
-            glVertex3f( 1.0f,-1.0f, -1.0f);
-            glVertex3f(-1.0f,-1.0f, -1.0f);
-            glVertex3f(-1.0f,-1.0f,-3.0f);
-            glVertex3f( 1.0f,-1.0f,-3.0f);
-            glEnd();
-            glBegin(GL_QUADS);
-            glColor3f(0.0f,0.0f,1.0f);
-            //Front
-            glVertex3f( 1.0f, 1.0f, -1.0f);
-            glVertex3f(-1.0f, 1.0f, -1.0f);
-            glVertex3f(-1.0f,-1.0f, -1.0f);
-            glVertex3f( 1.0f,-1.0f, -1.0f);
-            glEnd();
-            glBegin(GL_QUADS);
-            glColor3f(1.0f,1.0f,0.0f);
-            //Back
-            glVertex3f( 1.0f,-1.0f,-3.0f);
-            glVertex3f(-1.0f,-1.0f,-3.0f);
-            glVertex3f(-1.0f, 1.0f,-3.0f);
-            glVertex3f( 1.0f, 1.0f,-3.0f);
-            glEnd();
-            glBegin(GL_QUADS);
-            glColor3f(1.0f,0.0f,1.0f);
-            //Left
-            glVertex3f(-1.0f, 1.0f, -1.0f);
-            glVertex3f(-1.0f, 1.0f,-3.0f);
-            glVertex3f(-1.0f,-1.0f,-3.0f);
-            glVertex3f(-1.0f,-1.0f, -1.0f);
-            glEnd();
-            glBegin(GL_QUADS);
-            glColor3f(0.0f,1.0f,1.0f);
-            //Right
-            glVertex3f( 1.0f, 1.0f,-3.0f);
-            glVertex3f( 1.0f, 1.0f, -1.0f);
-            glVertex3f( 1.0f,-1.0f, -1.0f);
-            glVertex3f( 1.0f,-1.0f,-3.0f);
-            glEnd();
-            
-            // Color the lines that make up the square
-            glBegin(GL_LINE_LOOP);
-            //Top
-            glColor3f(0.0f,0.0f,0.0f);
-            glVertex3f( 1.0f, 1.0f,-3.0f);
-            glVertex3f(-1.0f, 1.0f,-3.0f);
-            glVertex3f(-1.0f, 1.0f,-1.0f);
-            glVertex3f( 1.0f, 1.0f,-1.0f);
-            glEnd();
-            glBegin(GL_LINE_LOOP);
-            //Bottom
-            glVertex3f( 1.0f,-1.0f,-1.0f);
-            glVertex3f(-1.0f,-1.0f,-1.0f);
-            glVertex3f(-1.0f,-1.0f,-3.0f);
-            glVertex3f( 1.0f,-1.0f,-3.0f);
-            glEnd();
-            glBegin(GL_LINE_LOOP);
-            //Front
-            glVertex3f( 1.0f, 1.0f,-1.0f);
-            glVertex3f(-1.0f, 1.0f,-1.0f);
-            glVertex3f(-1.0f,-1.0f,-1.0f);
-            glVertex3f( 1.0f,-1.0f,-1.0f);
-            glEnd(); 
-            glBegin(GL_LINE_LOOP);
-            //Back
-            glVertex3f( 1.0f,-1.0f,-3.0f);
-            glVertex3f(-1.0f,-1.0f,-3.0f);
-            glVertex3f(-1.0f, 1.0f,-3.0f);
-            glVertex3f( 1.0f, 1.0f,-3.0f);
-            glEnd();
-            glBegin(GL_LINE_LOOP);
-            //Left
-            glVertex3f(-1.0f, 1.0f,-1.0f);
-            glVertex3f(-1.0f, 1.0f,-3.0f);
-            glVertex3f(-1.0f,-1.0f,-3.0f);
-            glVertex3f(-1.0f,-1.0f,-1.0f);
-            glEnd();
-            glBegin(GL_LINE_LOOP);
-            //Right
-            glVertex3f( 1.0f, 1.0f,-3.0f);
-            glVertex3f( 1.0f, 1.0f,-1.0f);
-            glVertex3f( 1.0f,-1.0f,-1.0f);
-            glVertex3f( 1.0f,-1.0f,-3.0f);
-            glEnd(); 
-        }catch(Exception e){
-        }
-    }    
+//    // This is where the Quads/Lines are created and colored
+//    private void render() {
+//        try{
+//            // Start creating the cube. They are moved back away from the 
+//            // camera so that the camera does not appear inside of the cube.
+//            glBegin(GL_QUADS);
+//            //Top
+//            glColor3f(1.0f,0.0f,0.0f);
+//            glVertex3f( 1.0f, 1.0f,-3.0f);
+//            glVertex3f(-1.0f, 1.0f,-3.0f);
+//            glVertex3f(-1.0f, 1.0f, -1.0f);
+//            glVertex3f( 1.0f, 1.0f, -1.0f);
+//            glEnd();
+//            glBegin(GL_QUADS);
+//            glColor3f(0.0f,1.0f,0.0f);
+//            //Bottom
+//            glVertex3f( 1.0f,-1.0f, -1.0f);
+//            glVertex3f(-1.0f,-1.0f, -1.0f);
+//            glVertex3f(-1.0f,-1.0f,-3.0f);
+//            glVertex3f( 1.0f,-1.0f,-3.0f);
+//            glEnd();
+//            glBegin(GL_QUADS);
+//            glColor3f(0.0f,0.0f,1.0f);
+//            //Front
+//            glVertex3f( 1.0f, 1.0f, -1.0f);
+//            glVertex3f(-1.0f, 1.0f, -1.0f);
+//            glVertex3f(-1.0f,-1.0f, -1.0f);
+//            glVertex3f( 1.0f,-1.0f, -1.0f);
+//            glEnd();
+//            glBegin(GL_QUADS);
+//            glColor3f(1.0f,1.0f,0.0f);
+//            //Back
+//            glVertex3f( 1.0f,-1.0f,-3.0f);
+//            glVertex3f(-1.0f,-1.0f,-3.0f);
+//            glVertex3f(-1.0f, 1.0f,-3.0f);
+//            glVertex3f( 1.0f, 1.0f,-3.0f);
+//            glEnd();
+//            glBegin(GL_QUADS);
+//            glColor3f(1.0f,0.0f,1.0f);
+//            //Left
+//            glVertex3f(-1.0f, 1.0f, -1.0f);
+//            glVertex3f(-1.0f, 1.0f,-3.0f);
+//            glVertex3f(-1.0f,-1.0f,-3.0f);
+//            glVertex3f(-1.0f,-1.0f, -1.0f);
+//            glEnd();
+//            glBegin(GL_QUADS);
+//            glColor3f(0.0f,1.0f,1.0f);
+//            //Right
+//            glVertex3f( 1.0f, 1.0f,-3.0f);
+//            glVertex3f( 1.0f, 1.0f, -1.0f);
+//            glVertex3f( 1.0f,-1.0f, -1.0f);
+//            glVertex3f( 1.0f,-1.0f,-3.0f);
+//            glEnd();
+//            
+//            // Color the lines that make up the square
+//            glBegin(GL_LINE_LOOP);
+//            //Top
+//            glColor3f(0.0f,0.0f,0.0f);
+//            glVertex3f( 1.0f, 1.0f,-3.0f);
+//            glVertex3f(-1.0f, 1.0f,-3.0f);
+//            glVertex3f(-1.0f, 1.0f,-1.0f);
+//            glVertex3f( 1.0f, 1.0f,-1.0f);
+//            glEnd();
+//            glBegin(GL_LINE_LOOP);
+//            //Bottom
+//            glVertex3f( 1.0f,-1.0f,-1.0f);
+//            glVertex3f(-1.0f,-1.0f,-1.0f);
+//            glVertex3f(-1.0f,-1.0f,-3.0f);
+//            glVertex3f( 1.0f,-1.0f,-3.0f);
+//            glEnd();
+//            glBegin(GL_LINE_LOOP);
+//            //Front
+//            glVertex3f( 1.0f, 1.0f,-1.0f);
+//            glVertex3f(-1.0f, 1.0f,-1.0f);
+//            glVertex3f(-1.0f,-1.0f,-1.0f);
+//            glVertex3f( 1.0f,-1.0f,-1.0f);
+//            glEnd(); 
+//            glBegin(GL_LINE_LOOP);
+//            //Back
+//            glVertex3f( 1.0f,-1.0f,-3.0f);
+//            glVertex3f(-1.0f,-1.0f,-3.0f);
+//            glVertex3f(-1.0f, 1.0f,-3.0f);
+//            glVertex3f( 1.0f, 1.0f,-3.0f);
+//            glEnd();
+//            glBegin(GL_LINE_LOOP);
+//            //Left
+//            glVertex3f(-1.0f, 1.0f,-1.0f);
+//            glVertex3f(-1.0f, 1.0f,-3.0f);
+//            glVertex3f(-1.0f,-1.0f,-3.0f);
+//            glVertex3f(-1.0f,-1.0f,-1.0f);
+//            glEnd();
+//            glBegin(GL_LINE_LOOP);
+//            //Right
+//            glVertex3f( 1.0f, 1.0f,-3.0f);
+//            glVertex3f( 1.0f, 1.0f,-1.0f);
+//            glVertex3f( 1.0f,-1.0f,-1.0f);
+//            glVertex3f( 1.0f,-1.0f,-3.0f);
+//            glEnd(); 
+//        }catch(Exception e){
+//        }
+//    }    
 }
 
