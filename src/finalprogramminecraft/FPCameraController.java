@@ -151,9 +151,9 @@ public class FPCameraController {
         camera.lookThrough();
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         //you would draw your scene here.
-      Chunk chunkObject = new Chunk(-30,1,-75);
+        Chunk chunkObject = new Chunk(-30,1,-75);
         chunkObject.render();
-              System.out.println("Chunk object render11111111111122222222222222223333333333333333333344444444444444555555555555555555               56666666666666666667777777777777777777777");
+        //System.out.println("Chunk object render11111111111122222222222222223333333333333333333344444444444444555555555555555555               56666666666666666667777777777777777777777");
         
         //draw the buffer to the screen
         Display.update();
