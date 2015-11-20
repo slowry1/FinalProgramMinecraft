@@ -1,5 +1,15 @@
 package finalprogramminecraft;
 
+/*******************************************************
+* file: SimplexNoise_octave.java
+* authors: Stefan Gustavson
+* class: CS 445 - Computer Graphics - Fall Section 01
+*
+* assignment: Final Program
+*
+* A speed-improved simplex noise algorithm for 2D, 3D and 4D in Java.
+*/
+
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -8,7 +18,6 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 /*
- * A speed-improved simplex noise algorithm for 2D, 3D and 4D in Java.
  *
  * Based on example code by Stefan Gustavson (stegu@itn.liu.se).
  * Optimisations by Peter Eastman (peastman@drizzle.stanford.edu).

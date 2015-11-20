@@ -1,6 +1,21 @@
-
-
 package finalprogramminecraft;
+
+/*******************************************************
+* file: FPCameraController.java
+* authors: Scott Lowry, Daniel Lynch, Matt Capparelli
+* class: CS 445 - Computer Graphics - Fall Section 01
+*
+* assignment: Final Program
+* date last modified: 11/20/2015
+*
+* purpose: This file describes the functions necessary for the user to control
+* the camera and render what is loaded into view.  The controls are as follows:
+*  
+*       W/S/A/D And Up/Down/Left/Right (Arrow keys): Forward/Backward/Left/Right
+*       Space Bar: Move Up
+*       Left Shift: Move Down
+*       Mouse: Looks around
+*/
 
 import org.lwjgl.util.vector.Vector3f;
 import org.lwjgl.input.Keyboard;
@@ -9,17 +24,24 @@ import org.lwjgl.opengl.Display;
 import static org.lwjgl.opengl.GL11.*;
 import org.lwjgl.Sys;
 
-// This is our First Person Camera Controller class.
+//This is our First Person Camera Controller class - handles motion, user input
 public class FPCameraController {
     //3d vector to store the camera's position in
     private Vector3f position = null;
     private Vector3f lPosition = null;
+    
     //the rotation around the Y axis of the camera
     private float yaw = 0.0f;
+    
     //the rotation around the X axis of the camera
     private float pitch = 0.0f;
     private Vector3Float me;
+    
+    //To avoid re-randomizing the block types of the chunk
+    private boolean firstTime;
+    private Chunk chunkObject;
 
+    //Constructor 
     public FPCameraController(float x, float y, float z){
         //instantiate position Vector3f to the x y z params.
         position = new Vector3f(x, y, z);
@@ -27,6 +49,8 @@ public class FPCameraController {
         lPosition.x = 0f;
         lPosition.y = 15f;
         lPosition.z = 0f;
+        
+        firstTime = true;
     }
     
     //increment the camera's current yaw rotation
@@ -102,7 +126,7 @@ public class FPCameraController {
         float lastTime = 0.0f; // when the last frame was
         long time = 0;
         float mouseSensitivity = 0.09f;
-        float movementSpeed = .35f;
+        float movementSpeed = 0.35f;
         //hide the mouse
         Mouse.setGrabbed(true);
         
@@ -150,10 +174,12 @@ public class FPCameraController {
         //look through the camera before you draw anything
         camera.lookThrough();
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        //you would draw your scene here.
-        Chunk chunkObject = new Chunk(-30,1,-75);
+        //Draw the scene
+        if (firstTime) {
+            chunkObject = new Chunk(-30,1,-75);
+            firstTime = false;
+        }
         chunkObject.render();
-        //System.out.println("Chunk object render11111111111122222222222222223333333333333333333344444444444444555555555555555555               56666666666666666667777777777777777777777");
         
         //draw the buffer to the screen
         Display.update();
@@ -162,7 +188,9 @@ public class FPCameraController {
         Display.destroy();
     }
     
-//    // This is where the Quads/Lines are created and colored
+//      ***FROM CHECKPOINT #1***   
+//
+//    This is where the Quads/Lines are created and colored
 //    private void render() {
 //        try{
 //            // Start creating the cube. They are moved back away from the 

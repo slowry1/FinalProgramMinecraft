@@ -1,5 +1,18 @@
 package finalprogramminecraft;
 
+/*******************************************************
+* file: SimplexNoise.java
+* source: Cal Poly Pomona - Blackboard Resource
+* class: CS 445 - Computer Graphics - Fall Section 01
+*
+* assignment: Final Program
+*
+* purpose: This is the SimplexNoise object class, which is constructed with a 
+* random persistence and seed.  It can generate noise given any 2D or 3D 
+* coordinate location using the locally generated frequencies and amplitudes
+* variables.
+*/
+
 import java.util.Random;
 
 public class SimplexNoise {
@@ -48,7 +61,7 @@ public class SimplexNoise {
           //double frequency = Math.pow(2,i);
           //double amplitude = Math.pow(persistence,octaves.length-i);
 
-          result=result+octaves[i].noise(x/frequencys[i], y/frequencys[i])* amplitudes[i];
+          result = result + octaves[i].noise(x/frequencys[i], y/frequencys[i])* amplitudes[i];
         }
 
 
