@@ -42,7 +42,10 @@ public class FPCameraController {
     //To avoid re-randomizing the block types of the chunk
     private boolean firstTime;
     private Chunk chunkObject;
+<<<<<<< HEAD
     
+=======
+>>>>>>> adbce1464f35b74e0fd0ebee9d65c96142bb6b16
 
     //Constructor 
     public FPCameraController(float x, float y, float z){
@@ -191,8 +194,11 @@ public class FPCameraController {
         Display.destroy();
     }
     
+<<<<<<< HEAD
 
     
+=======
+>>>>>>> adbce1464f35b74e0fd0ebee9d65c96142bb6b16
 //      ***FROM CHECKPOINT #1***   
 //
 //    This is where the Quads/Lines are created and colored

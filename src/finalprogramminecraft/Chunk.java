@@ -85,10 +85,17 @@ public class Chunk {
                     
                     //generate height from simplex noise
                     int height = (int)(startY + Math.abs((int)(CHUNK_SIZE * noise.getNoise((int)x,(int)z))));
+<<<<<<< HEAD
                     
                     if (y >= height) {
                         break;
                     }          
+=======
+                    if (y >= height) {
+                        break;
+                    }
+                    
+>>>>>>> adbce1464f35b74e0fd0ebee9d65c96142bb6b16
                     VertexPositionData.put( createCube(
                             (float)(startX + x* CUBE_LENGTH),
                             (float)(y*CUBE_LENGTH+(int)(CHUNK_SIZE*.8)),
@@ -97,6 +104,7 @@ public class Chunk {
                     
                     VertexColorData.put(createCubeVertexCol(getCubeColor(
                             Blocks[(int) x][(int) y][(int) z])));
+<<<<<<< HEAD
                     //Checks if it is bottom cube
                     if(y == 0){
                          VertexTextureData.put(createTexCube((float) 0, 
@@ -109,6 +117,11 @@ public class Chunk {
                     VertexTextureData.put(createTexCube((float) 0, 
                             (float)0,Blocks[(int)(x)][(int)(y)][(int) (z)]));
                     }
+=======
+                    
+                    VertexTextureData.put(createTexCube((float) 0, 
+                            (float)0,Blocks[(int)(x)][(int)(y)][(int) (z)]));
+>>>>>>> adbce1464f35b74e0fd0ebee9d65c96142bb6b16
                 }
             }
         }
@@ -197,6 +210,7 @@ public class Chunk {
                     //is it possible to set block type once only in the beginning?
                     //staticaly set block type?
 
+<<<<<<< HEAD
                  //   float rand = r.nextFloat();
     if ( y == 0){
         Blocks[x][y][z] = new Block(Block.BlockType.BlockType_Bedrock);
@@ -206,6 +220,13 @@ public class Chunk {
     }else 
         Blocks[x][y][z] = new Block(Block.BlockType.BlockType_Dirt);
         /*            }else if(rand>0.664f){
+=======
+                    float rand = r.nextFloat();
+
+                    if(rand>0.830f){
+                        Blocks[x][y][z] = new Block(Block.BlockType.BlockType_Grass);
+                    }else if(rand>0.664f){
+>>>>>>> adbce1464f35b74e0fd0ebee9d65c96142bb6b16
                         Blocks[x][y][z] = new Block(Block.BlockType.BlockType_Sand);
                     }else if(rand>0.498f){
                         Blocks[x][y][z] = new Block(Block.BlockType.BlockType_Dirt);
@@ -231,7 +252,11 @@ public class Chunk {
     
     //Assigns textures from terrain.png to the sides of each cube
     public static float[] createTexCube(float x, float y, Block block) {
+<<<<<<< HEAD
         int tempBlockID;
+=======
+        
+>>>>>>> adbce1464f35b74e0fd0ebee9d65c96142bb6b16
         float offset = (1024f/16)/1024f;
         // if the current block is the top block set texture to grass
         if(topShelf){
