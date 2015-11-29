@@ -85,13 +85,10 @@ public class Chunk {
                     
                     //generate height from simplex noise
                     int height = (int)(startY + Math.abs((int)(CHUNK_SIZE * noise.getNoise((int)x,(int)z))));
-                    System.out.println("This is height: "+height);
-                    System.out.println("This is y: "+y);
+                    
                     if (y >= height) {
                         break;
-                    }
-                    System.out.println("This is y2: "+y);
-                    
+                    }          
                     VertexPositionData.put( createCube(
                             (float)(startX + x* CUBE_LENGTH),
                             (float)(y*CUBE_LENGTH+(int)(CHUNK_SIZE*.8)),
@@ -201,14 +198,13 @@ public class Chunk {
                     //staticaly set block type?
 
                  //   float rand = r.nextFloat();
-System.out.println("This is the y inside chunk: "+y);
     if ( y == 0){
         Blocks[x][y][z] = new Block(Block.BlockType.BlockType_Bedrock);
     }else if(z == 29|| z == 0 || x == 29 || x == 0){              
     //  if(rand>0.830f){
                         Blocks[x][y][z] = new Block(Block.BlockType.BlockType_Dirt);
     }else 
-        Blocks[x][y][z] = new Block(Block.BlockType.BlockType_Water);
+        Blocks[x][y][z] = new Block(Block.BlockType.BlockType_Dirt);
         /*            }else if(rand>0.664f){
                         Blocks[x][y][z] = new Block(Block.BlockType.BlockType_Sand);
                     }else if(rand>0.498f){
